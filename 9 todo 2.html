@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo 2</title>
+</head>
+<body>
+    <input type="text" placeholder="enter text" id="t1"/>
+    <button onclick="fun()">Add</button>
+    <div id="d1"></div>
+    <script>
+        let a=[]
+        let tf=document.getElementById('t1')
+        let dr=document.getElementById('d1')
+        let fun=()=>{
+            a.push(tf.value)
+            tf.value=''
+            let str=''
+            for(let i=0;i<a.length;i++){
+                str=str+"<li>"+a[i]+"</li>"
+            }
+            dr.innerHTML=str
+        }
+    </script>
+</body>
+</html>

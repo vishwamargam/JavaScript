@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Types</title>
+</head>
+
+<body>
+    <script>
+        console.log("Number Type")
+        let a = 5, b = 4.5
+        console.log(typeof (a), typeof (b)) // number number
+    </script>
+    <script>
+        console.log("Boolean Type")
+        a = true, b = false
+        console.log(typeof (a), typeof (b)) //boolean boolean
+    </script>
+    <script>
+        console.log("String Type")
+        a = "abcd", b = '123'
+        console.log(typeof (a), typeof (b)) //string string
+    </script>
+    <script>
+        console.log('Undefined Type')
+        let d
+        console.log(d, typeof (d)) //undefined 'undefined'
+        d = 23
+        console.log(d, typeof (d)) // 23 'number'
+
+        d = null
+        console.log(d, typeof (d)) //null object
+    </script>
+    <script>
+        console.log("Array Type")
+        a = [3, 4, 5, 6]
+        console.log(a, typeof (a)) //(4) [3,4,5,6] object
+        console.log(1 in a) //true
+    </script>
+    <script>
+        console.log("Object Type")
+
+        a = { 'name': 'ramu', age: 20 }
+        console.log(a, typeof (a)) // {name:'ramu', age:20} 'object'
+
+        b = { x: 10, y: 20, z: 30, x: 40 }
+        console.log(b, typeof (b)) // {x:40, y:20, x:30} object
+    </script>
+    <script>
+        console.log("Type Conversion")
+        a = 3454.56
+        console.log(a, typeof (a)) //3454.56 'number'
+        a = parseInt(a)
+        console.log(a, typeof (a)) // 3454 number
+        a = '3454.56'
+        console.log(a, typeof (a)) // 3454.56 string
+        a = parseFloat(a)
+        console.log(a, typeof (a)) // 3454.56 number
+    </script>
+</body>
+
+</html>

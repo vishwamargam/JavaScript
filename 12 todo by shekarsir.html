@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="t1" />
+        <button onclick="add()">add</button>
+        <button onclick="update()" style="display: none;">update</button>
+    </div>
+    <div class="con">
+        <h1>Todos:</h1>
+        <table id="tbl">
+
+        </table>
+        <h1>Comp todos:</h1>
+        <table id="tbl1">
+
+        </table>
+    </div>
+    <script>
+        let tfr = document.getElementById("t1")
+        let x
+        let add = () => {
+            let todo = localStorage.getItem("todo")
+            if (todo == null) {
+                let a = []
+                a.push(tfr.value)
+                localStorage.setItem("todo", JSON.stringify(a))
+            }
+            else {
+                let a = JSON.parse(todo)
+                a.push(tfr.value)
+                localStorage.setItem("todo", JSON.stringify(a))
+            }
+            tfr.value = ""
+            disp()
+        }
+        let disp = () => {
+            let str = ""
+            let todo = localStorage.getItem("todo")
+            let a = JSON.parse(todo)
+            for (let i = 0; i < a.length; i++) {
+                str = str + `<tr><td>${a[i]}</td><td><button onclick="edit(${i})">edit</button>
+            </td><td><button onclick="del(${i})">delete</button></td>
+            <td><button onclick="comp(${i})">completed</button></td></tr>`
+            }
+            document.getElementById("tbl").innerHTML = str
+        }
+        let del = (ind) => {
+            let todo = localStorage.getItem("todo")
+            let a = JSON.parse(todo)
+            a.splice(ind, 1)
+            localStorage.setItem("todo", JSON.stringify(a))
+            disp()
+
+
+        }
+        let comp = (ind) => {
+            let todo = localStorage.getItem("todo")
+            let a = JSON.parse(todo)
+            let ctak = localStorage.getItem("com")
+            if (ctak == null) {
+                let ct = []
+                ct.push(a[ind])
+                localStorage.setItem("com", JSON.stringify(ct))
+            }
+            else {
+                let ct = JSON.parse(ctak)
+                ct.push(a[ind])
+                localStorage.setItem("com", JSON.stringify(ct))
+            }
+
+            a.splice(ind, 1)
+            localStorage.setItem("todo", JSON.stringify(a))
+            disp()
+            comdisp()
+
+        }
+
+        let edit = (ind) => {
+            let todo = localStorage.getItem("todo")
+            let a = JSON.parse(todo)
+            tfr.value = a[ind]
+            let btn = document.getElementsByTagName("button")
+            btn[0].style.display = "none"
+            btn[1].style.display = "inline-block"
+            x = ind
+        }
+        let update = () => {
+            let todo = localStorage.getItem("todo")
+            let a = JSON.parse(todo)
+            a[x] = tfr.value
+            localStorage.setItem("todo", JSON.stringify(a))
+            disp()
+            let btn = document.getElementsByTagName("button")
+            btn[0].style.display = "inline-block"
+            btn[1].style.display = "none"
+            tfr.value = ""
+
+        }
+
+        disp()
+
+        let comdisp = () => {
+            let str = ""
+            let cmp = localStorage.getItem("com")
+            let a = JSON.parse(cmp)
+            for (let i = 0; i < a.length; i++) {
+                str = str + `<tr><td>${a[i]}</td><td><button onclick="delcom(${i})">delete</button></td></tr>`
+            }
+            document.getElementById("tbl1").innerHTML = str
+        }
+        let delcom = (ind) => {
+            let todo = localStorage.getItem("com")
+            let a = JSON.parse(todo)
+            a.splice(ind, 1)
+            localStorage.setItem("com", JSON.stringify(a))
+            comdisp()
+        }
+        comdisp()
+
+    </script>
+</body>
+
+</html>

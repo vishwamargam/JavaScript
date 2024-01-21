@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color</title>
+    <style>
+        div{
+            width: 100%;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button onclick="fun(this)">red</button>
+        <button onclick="fun(this)">rgb(100,150,200)</button>
+        <button onclick="fun(this)">hsl(320,70%,40%)</button>
+        <button onclick="fun(this)">#fa4511</button>
+    </div>
+    <script>
+        function fun(e) {
+            document.querySelector("div").style.backgroundColor = e.innerHTML
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard events</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <input type="text" onkeyup="fun1(this)"/>
+    <textarea onkeypress="fun2(event)"></textarea>
+    <script>
+        let fun1=(e)=>{
+            e.value=e.value.toUpperCase()
+        }
+        let fun2=(e)=>{
+            console.log(e.key)
+        }
+
+    </script>
+</body>
+</html>

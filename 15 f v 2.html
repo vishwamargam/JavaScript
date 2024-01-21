@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation</title>
+    <style>
+        *{
+            outline: none;
+        }
+        .x{
+            border: 2px solid green;
+        }
+        .y{
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" placeholder="enter name" onblur="fun(this)"/>
+    </div>
+    <script>
+        let fun=(e)=>{
+            if(e.value==""){
+                e.className="y"
+            }
+            else{
+                e.className="x"
+            }
+        }
+    </script>
+</body>
+</html>

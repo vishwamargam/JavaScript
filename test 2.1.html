@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .con {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .main {
+            width: 70%;
+            height: 50%;
+            margin: auto;
+        }
+
+        .input {
+            width: 100%;
+            height: 70%;
+            border: 1px solid grey;
+            background-color: lightgray;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .dob {
+            display: flex;
+            gap: 30px;
+            font-size: 20px;
+        }
+
+        .cd {
+            display: flex;
+            gap: 30px;
+            font-size: 20px;
+        }
+
+        button {
+            background-color: green;
+            color: white;
+            font-size: 20px;
+        }
+
+        .output {
+            width: 100%;
+            height: 30%;
+        }
+
+        .output p {
+            background-color: green;
+            color: white;
+            font-size: 20px;
+        }
+
+        #op {
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="con">
+        <div class="main">
+            <div class="input">
+                <div class="dob">
+                    <p>Date of birth</p>
+                    <input type="date" id="dob" />
+                </div>
+                <div class="cd">
+                    <p>Age at the date of</p>
+                    <input type="date" id="cd" />
+                </div>
+
+                <button onclick="fun(this)">Calculate <i class="fa-regular fa-circle-play"></i></button>
+            </div>
+            <div class="output">
+                <p>Result</p>
+                <h3>Age:</h3>
+                <div id="op"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function fun(e) {
+            let dob = document.getElementById('dob').value
+            let cd = document.getElementById("cd").value
+            let op = document.getElementById("op")
+            console.log(dob,cd)
+
+            dob = dob.split("-")
+            cd = cd.split("-")
+            console.log(dob,cd)
+            let rs = []
+            for (i = 0; i < cd.length; i++) {
+                rs.push(Math.abs(parseInt(cd[i]) - parseInt(dob[i])))
+            }
+            op.innerHTML = rs[2] + " Days " + rs[1] + " Months " + rs[0] + " Years"
+        }
+    </script>
+</body>
+
+</html>

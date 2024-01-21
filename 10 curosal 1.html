@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Curosal</title>
+   <style>
+      * {
+         margin: 0px;
+         padding: 0px;
+      }
+
+      .con {
+         width: 100%;
+         height: 90vh;
+         position: relative;
+      }
+
+      .con img {
+         width: 100%;
+         height: 100%;
+      }
+
+      .text {
+         position: absolute;
+         top: 20%;
+         left: 30px;
+         width: 50%;
+         color: white;
+         font-size: 30px;
+      }
+
+      .switch {
+         width: 100%;
+         height: 70px;
+         display: flex;
+         gap: 10px;
+         justify-content: center;
+         align-items: center;
+      }
+
+      .switch input {
+         height: 50px;
+         width: 50px;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="con">
+      <img src="z1.jpg" alt="img" />
+      <div class="text">Text 1</div>
+   </div>
+   <div class="switch">
+      <input type="radio" value="0" name="round" onclick="shift(this)" checked />
+      <input type="radio" value="1" name="round" onclick="shift(this)" />
+      <input type="radio" value="2" name="round" onclick="shift(this)" />
+      <input type="radio" value="3" name="round" onclick="shift(this)" />
+      <input type="radio" value="4" name="round" onclick="shift(this)" />
+      <input type="radio" value="5" name="round" onclick="shift(this)" />
+   </div>
+   <script>
+      let i = 0
+      let a = ['z1.jpg', 'z2.jpg', 'z3.jpg', 'z4.jpg', 'z5.jpg', 'z6.jpg',]
+      let x = ['Text 1', 'Text 2', 'Text 3', 'Text 4', 'Text 5', 'Text 6',]
+      function fun() {
+         i++
+         if (i >= 6) {
+            i = 0
+         }
+         document.getElementsByTagName('img')[0].src = a[i]
+         document.getElementsByClassName('text')[0].innerHTML = x[i]
+         document.getElementsByTagName("input")[i].checked=true
+      }
+      setInterval(fun,5000)
+      let shift = (e) => {
+         i=e.value
+         document.getElementsByTagName('img')[0].src = a[i]
+         document.getElementsByClassName('text')[0].innerHTML = x[i]
+      }
+   </script>
+</body>
+
+</html>

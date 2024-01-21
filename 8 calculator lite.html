@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        div{
+            width: 100%;
+            height: 200px;
+            background-color: aliceblue;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text" placeholder="Enter Num 1" />
+        <input type="text" placeholder="Enter Num 2" />
+        <button onclick="fun('+')">+</button>
+        <button onclick="fun('-')">-</button>
+        <button onclick="fun('*')">*</button>
+        <button onclick="fun('/')">/</button>
+        <button onclick="fun('%')">%</button>
+        <button onclick="fun('**')">power</button>
+        <input type="text" placeholder="Result" readonly />
+    </div>
+
+    <script>
+        function fun(op) {
+            let ipf = document.getElementsByTagName("input")
+            let a = parseInt(ipf[0].value)
+            let b = parseInt(ipf[1].value)
+            let c
+            switch (op) {
+                case '+':
+                    c = a + b
+                    break;
+                case '-':
+                    c = a - b
+                    break;
+                case '*':
+                    c = a * b
+                    break;
+                case '/':
+                    c = a / b
+                    break;
+                case '%':
+                    c = a % b
+                    break;
+                case '**':
+                    c = a ** b
+                    break;
+                default:
+                    break;
+            }
+            ipf[2].value=c
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Events</title>
+</head>
+<body>
+    <input type="text" onfocus="fun1(this)" onblur="fun2(this)"/>
+    <script>
+        let fun1=(e)=>{
+            e.style.backgroundColor="aliceblue"
+            e.style.color="darkmagenta"
+        }
+        let fun2=(e)=>{
+            e.style.backgroundColor="white"
+            e.style.color="black"
+        }
+    </script>
+</body>
+</html>

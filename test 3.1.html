@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather Report</title>
+    <style>
+        nav {
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            background-color: rgb(156, 196, 232);
+            padding-top: 10px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        weather Report
+    </nav>
+    <input type="text" placeholder="city name" id="input" />
+    <button onclick="search()" id="search">Search</button>
+    <table id="table"> </table>
+    <script>
+        let title = document.getElementById('input')
+        let searchbutton = document.getElementById("search")
+        let table = document.getElementById('table')
+        function search() {
+            console.log(title.value)
+            fetch("https://api.openweathermap.org/data/2.5/weather?q=" + title.value + "&units=metric&appid=eedd52cc943dd9174f2c65178d154bdd").
+                then((response) => response.json()).
+                then((data) => { 
+                    let dt = new Date(data.dt)
+                    let sunrise = new Date(data.sys.sunrise)
+                    let sunset = new Date(data.sys.sunset)
+                    str = `<tr><td>City:</td><td>${data.name}</td></tr>
+                           <tr><td>Id:</td><td>${data.id}</td></tr>
+                           <tr><td>Date:</td><td>${dt.toLocaleDateString()}</td></tr>
+                           <tr><td>Time:</td><td>${dt.toLocaleTimeString()}</td></tr>
+                           <tr><td>Weather:</td><td>${data.weather[0].main}</td></tr>
+                           <tr><td>Tempetature:</td><td>${data.main.temp}</td></tr>
+                           <tr><td>Feels Like:</td><td>${data.main.feels_like}</td></tr>
+                           <tr><td>Min Temperature:</td><td>${data.main.temp_min}</td></tr>
+                           <tr><td>Max Temperature:</td><td>${data.main.temp_max}</td></tr>
+                           <tr><td>Wind Speed:</td><td>${data.wind.speed} kmph</td></tr>
+                           <tr><td>Sunrise:</td><td>${sunrise.toLocaleTimeString()}</td></tr>
+                           <tr><td>Sunset:</td><td>${sunset.toLocaleTimeString()}</td></tr>`
+                    table.innerHTML = str
+                })
+        }
+    </script>
+</body>
+
+</html>

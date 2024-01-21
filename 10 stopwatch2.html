@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch 2</title>
+</head>
+
+<body>
+    <div id="d1">00:00</div>
+    <button onclick="setint()">Start</button>
+    <button onclick="stop()">Stop</button>
+    <button onclick="reset()">Reset</button>
+    <script>
+        let dr = document.getElementById("d1")
+        let m = 0; c = 0; iid = -1
+        function fun() {
+            c++
+            if (c == 60) {
+                m++;
+                c = 0
+            }
+            dr.innerHTML = (m >= 10 ? m : "0" + m) + ":" + (c >= 10 ? c : "0" + c)
+        }
+        function setint() {
+            if (iid == -1) {
+                iid = setInterval(fun, 1000);
+            }
+        }
+        function stop() {
+            clearInterval(iid)
+            iid = -1
+        }
+        function reset() {
+            clearInterval(iid)
+            iid = -1
+            m = 0; c = 0
+            dr.innerHTML = "00:00";
+        }
+    </script>
+</body>
+
+</html>

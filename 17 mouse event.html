@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Event</title>
+    <style>
+        .con{
+            width: 400px;
+            height: 400px;
+            background-color: aqua;
+            position: relative;
+        }
+        .circle{
+            position: absolute;
+            top: 0px;
+            width: 50px;
+            height: 50px;
+            background-color: brown;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="con" onmouseenter="fun1(event)" onclick="fun2(event)" ondblclick="fun3(event)" onmouseleave="fun4(event)">
+        <div class="circle"></div>
+    </div>
+    <script>
+        function fun1(e){
+            console.log("mouse enter at ", e.pageX,e.pageY)
+        }
+        function fun2(e){
+            // console.log("mouse click at ", e.pageX, e.pageY);
+            let circle=document.getElementsByClassName("circle")[0]
+            circle.style.top=e.pageY+"px"
+            circle.style.left=e.pageX+"px"
+        }
+        function fun3(e){
+            console.log("mouse dblclick at", e.pageX, e.pageY);
+        }
+        function fun4(e){
+            console.log("mouse exited at", e.pageX, e.pageY)
+        }
+    </script>
+</body>
+</html>

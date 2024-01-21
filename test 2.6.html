@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font</title>
+    <style>
+        * {
+            padding: 0px;
+            border: 0px;
+            margin: 0px;
+        }
+
+        .con {
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(218, 238, 254);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main {
+            width: 60%;
+            height: 70%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 50px;
+        }
+
+        .text {
+            background-color: white;
+            width: 100%;
+            height: 60%;
+        }
+
+        p {
+            font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            font-style: normal;
+            font-weight: normal;
+        }
+
+        .fun {
+            display: flex;
+            justify-content: space-between;
+            background-color: skyblue;
+            padding: 20px;
+        }
+
+        #ff {
+            margin-top: 10px;
+            height: 30px;
+            width: 100%;
+            font-size: 17px;
+            border-radius: 5px;
+        }
+
+        #fs {
+            margin-top: 15px;
+        }
+
+        .buttoncolor {
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .buttoncolor button:nth-child(1) {
+            height: 25px;
+            width: 25px;
+            background-color: black;
+            border: 0px;
+        }
+
+        .buttoncolor button:nth-child(2) {
+            height: 25px;
+            width: 25px;
+            background-color: red;
+            border: 0px;
+        }
+
+        .buttoncolor button:nth-child(3) {
+            height: 25px;
+            width: 25px;
+            background-color: blue;
+            border: 0px;
+        }
+
+        .buttoncolor button:nth-child(4) {
+            height: 25px;
+            width: 25px;
+            background-color: lawngreen;
+            border: 0px;
+        }
+
+        .fstylebutton, .fweightbutton{
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .fstylebutton button, .fweightbutton button{
+            width: 48%;
+            height: 29px;
+            border-radius: 5px;
+            font-size: 15px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="con">
+
+        <div class="main">
+
+            <div class="text">
+                <p id="text">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos consequuntur quibusdam
+                    repellat atque autem aperiam suscipit repudiandae minima ipsa corrupti, sit deleniti porro alias cum
+                    minus illo voluptas voluptate dicta.
+                </p>
+            </div>
+
+            <div class="fun">
+
+                <div>
+                    <h2>Font Family:</h2>
+                    <select id="ff" onclick="fun1(this)">
+                        <option value="0" selected disabled>Select</option>
+                        <option value="1">Default</option>
+                        <option value="2">Arial</option>
+                        <option value="3">Cambria</option>
+                        <option value="4">Monospace</option>
+                        <option value="5">Georgia</option>
+                    </select>
+                </div>
+
+                <div>
+                    <h2>Font Size:</h2>
+                    <input type="range" min="10" max="40" id="fs" onclick="fun2(this)" />
+                </div>
+
+                <div>
+                    <h2>Font Color:</h2>
+                    <div class="buttoncolor">
+                        <button onclick="fun3('black')"></button>
+                        <button onclick="fun3('red')"></button>
+                        <button onclick="fun3('blue')"></button>
+                        <button onclick="fun3('green')"></button>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>Font Style:</h2>
+                    <div class="fstylebutton">
+                        <button onclick="fun4('normal')">Normal</button>
+                        <button onclick="fun4('cursive')">cursive</button>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>Font Weight:</h2>
+                    <div class="fweightbutton">
+                        <button onclick="fun5('light')">Light</button>
+                        <button onclick="fun5('bold')">Bold</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        let text = document.getElementById('text')
+        function fun1(e) {
+            console.log(e.value)
+            if (ff.value == 1) {
+                text.style.fontFamily = 'Times New Roman'
+            }
+            else if (ff.value == 2) {
+                text.style.fontFamily = "Arial"
+            }
+            else if (ff.value == 3) {
+                text.style.fontFamily = "Cambria"
+            }
+            else if (ff.value == 4) {
+                text.style.fontFamily = "Monospace"
+            }
+            else if (ff.value == 5) {
+                text.style.fontFamily = "Georgia"
+            }
+        }
+        function fun2(e) {
+            console.log(e.value)
+            text.style.fontSize = fs.value + "px"
+        }
+        function fun3(e) {
+            if (e == 'black') {
+                text.style.color = 'black'
+            }
+            else if (e == 'red') {
+                text.style.color = 'red'
+            }
+            else if (e == 'blue') {
+                text.style.color = 'blue'
+            }
+            else if (e == 'green') {
+                text.style.color = 'lawngreen'
+            }
+        }
+        function fun4(e) {
+            if (e == 'normal') {
+                text.style.fontStyle = "normal"
+            }
+            else if (e == 'cursive') {
+                text.style.fontStyle = "italic"
+            }
+        }
+        function fun5(e) {
+            if (e == 'light') {
+                text.style.fontWeight = "normal"
+            }
+            else if (e == 'bold') {
+                text.style.fontWeight = "bold"
+            }
+        }
+    </script>
+</body>
+
+</html>

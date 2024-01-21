@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toggle</title>
+    <style>
+        div {
+            width: 100%;
+            height: 100vh;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button onclick="fun(this)">LightMode</button>
+    </div>
+    <script>
+        function fun(e) {
+            if (e.innerHTML == "LightMode") {
+                e.innerHTML = "DarkMode"
+                document.getElementsByTagName("div")[0].style.backgroundColor = "white"
+            }
+            else {
+                e.innerHTML = "LightMode"
+                document.getElementsByTagName("div")[0].style.backgroundColor = "black"
+            }
+        }
+    </script>
+</body>
+
+</html>

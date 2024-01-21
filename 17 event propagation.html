@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Propagation</title>
+    <style>
+        .con1{
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background-color: #c38eb4;
+        }
+        .con2{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background-color: #e1cbd7;
+            top: 50px;
+            left: 50px;
+        }
+        .con3{
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: #86abcf;
+            top: 50px;
+            left: 50px;
+        }
+        .con4{
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: #26425a;
+            top: 50px;
+            left: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="con1" onclick="fun1(event)">
+        <div class="con2" onclick="fun2(event)">
+            <div class="con3" onclick="fun3(event)">
+                <div class="con4" onclick="fun4(event)">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function fun1(e){
+            console.log("con1")
+        }
+        function fun2(e){
+            e.stopPropagation()
+            console.log("con2")
+        }
+        function fun3(e){
+            e.stopPropagation()
+            console.log("con3")
+        }
+        function fun4(e){
+            e.stopPropagation()
+            console.log("con4")
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom 1</title>
+</head>
+<body>
+    <h1 id="i1">Heading <b>hi</b><span>hello</span>1</h1>
+    <h1>Heading 2</h1>
+    <h1 class="c1">heading 3</h1>
+    <h1>heading 4</h1>
+    <p class="c1">P tag 1</p>
+    <div>
+        <section>
+            <p class="c1">P tag 2</p>
+        </section>
+    </div>
+    <div class="c1">div 2</div>
+    <script>
+        console.log(document.getElementById("i1"))
+        console.log(document.getElementById("i1").innerText)
+        console.log(document.getElementById("i1").innerHTML)
+        document.getElementById("i1").innerHTML="hello <i>JS</i>"
+        console.log(document.getElementsByTagName("h1"))
+        document.getElementsByTagName("h1")[2].innerHTML="React Js"
+        console.log(document.getElementsByClassName("c1"))
+        console.log(document.querySelector("p.c1"))
+        console.log(document.querySelectorAll("p.c1"))
+        console.log(document.querySelector("div p"))
+    </script>
+</body>
+</html>

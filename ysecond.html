@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truth or Dare</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            margin-top: 100px;
+            justify-content: center;
+        }
+
+        .con {
+            width: 60%;
+            height: 400px;
+            background-color: aliceblue;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        #name {
+            margin-top: 40px;
+            font-size: 40px;
+        }
+
+        .disp {
+            width: 80%;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(199, 229, 255);
+            border-radius: 5px;
+            font-size: 25px;
+        }
+
+        .but {
+            width: 50%;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        button {
+            width: 80px;
+            height: 40px;
+            font-size: 30px;
+            border-radius: 5px;
+        }
+
+        button:nth-child(1) {
+            background-color: lightgreen;
+        }
+
+        button:nth-child(2) {
+            background-color: red;
+        }
+    </style>
+    <script src="ytod.js"></script>
+</head>
+
+<body>
+    <div class="con">
+        <p id="name"></p>
+        <h1>Choose Truth or Dare</h1>
+        <div class="disp"></div>
+        <div class="but">
+            <button onclick="truth()">Truth</button>
+            <button onclick="dare()">Dare</button>
+            <button onclick="back()">Back</button>
+
+        </div>
+    </div>
+    <script>
+        let candidate = sessionStorage.getItem('candidate')
+        let name = document.getElementById('name')
+        name.innerHTML = candidate.toUpperCase()
+        let back = () => {
+            window.location = 'yfirst.html'
+        }
+    </script>
+</body>
+
+</html>

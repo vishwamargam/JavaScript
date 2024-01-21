@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessing data from API calls</title>
+</head>
+<body>
+    <table id="table"> </table>
+    <script>
+        fetch("https://jsonplaceholder.typicode.com/albums").
+        then((response)=>response.json()).
+        then(data=>
+        // console.log(data)
+        {
+            let str="<tr><th>UserId</th><th>Id</th><th>Title</th></tr>"
+            data.forEach((item)=>{
+                str=str+ `<tr><td>${item.userId}</td><td>${item.id}</td><td>${item.title}</td></tr>`
+            })
+            let tabledata=document.getElementById("table")
+            tabledata.innerHTML=str
+
+        }
+        )
+    </script>
+</body>
+</html>

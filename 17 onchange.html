@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onchange Event</title>
+</head>
+
+<body>
+    <select onchange="fun(this)">
+        <option value="1">Cse</option>
+        <option value="2">Eee</option>
+        <option value="3">Ece</option>
+        <option value="4">Me</option>
+    </select>
+
+    <div>
+        <input type="radio" value="male" name="gender" onchange="fun1(this)" />Male
+        <input type="radio" value="female" name="gender" onchange="fun1(this)" />Female
+    </div>
+
+    <div>
+        <input type="checkbox" value="telugu" onchange="fun2(this)" />
+        <input type="checkbox" value="english" onchange="fun2(this)" />
+        <input type="checkbox" value="hindi" onchange="fun2(this)" />
+    </div>
+
+    <div>
+        <input type="range" min="1" max="20" onchange="fun3(this)" />
+    </div>
+
+    <script>
+        let fun = (e) => {
+            console.log(e.value)
+        }
+        let fun1 = (e) => {
+            let rf = document.getElementsByTagName("input")
+
+            if (rf[0].checked) {
+                console.log("you selected male")
+            }
+            else {
+                console.log("you selected female")
+            }
+        }
+        let fun2=(e)=>{
+            if(e.checked){
+                console.log("you opted language",e.value);
+            }
+            else{
+                console.log("you removed language",e.value)
+            }
+        }
+        let fun3=(e)=>{
+            console.log(e.value);
+        }
+    </script>
+</body>
+
+</html>

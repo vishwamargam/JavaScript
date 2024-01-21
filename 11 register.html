@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        * {
+            margin: 0px;
+            outline: none;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: dimgray;
+        }
+
+        div {
+            width: 400px;
+            height: 400px;
+            background-color: gray;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0px 0px 6px 6px black;
+        }
+
+        input {
+            width: 60%;
+            height: 30px;
+            border-radius: 5px;
+            border: grey;
+            padding-left: 10px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        button {
+            width: 40%;
+            height: 28px;
+            font-size: 15px;
+            border-radius: 5px;
+            border: grey;
+        }
+
+        p {
+            font-size: 20px;
+            color: crimson;
+        }
+        #showerror{
+            border: none;
+            background-color: aliceblue;
+            width: auto;
+            height: auto;
+            padding: 3px;
+            box-shadow: none;
+            border-radius: 5px;
+            display: none;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div id="showerror"></div>
+        <input type="text" placeholder="Enter Name" id="name" />
+        <input type="email" placeholder="Enter Email" id="email" />
+        <input type="password" placeholder="password" id="password" />
+        <button onclick="register()">Register</button>
+        <p>Already have an account, then</p>
+        <button onclick="login()">Login</button>
+    </div>
+    <script>
+        let register = () => {
+            localStorage.setItem("name", document.getElementById("name").value)
+            localStorage.setItem("email", document.getElementById("email").value)
+            localStorage.setItem("password", document.getElementById("password").value)
+            if (document.getElementById("name").value.length > 1) {
+                window.location = "11 login.html"
+            }
+            else{
+                let showerror=document.getElementById("showerror")
+                showerror.innerHTML="Please check the email and password correctly.."
+                showerror.style.display="block"  
+            }
+        }
+        let login = () => {
+            window.location = "11 login.html"
+        }
+    </script>
+</body>
+
+</html>

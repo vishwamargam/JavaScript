@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Binding</title>
+</head>
+<body>
+    <button>Click</button>
+    <button onclick="addevent()">Add</button>
+    <button onclick="removeevent()">Remove Event</button>
+
+    <script>
+        let btn=document.getElementsByTagName("button")[0]
+
+        let addevent=()=>{
+            btn.addEventListener("click",fun)
+            btn.addEventListener("mouseover",fun1)
+            btn.addEventListener("mouseleave",fun2)
+        }
+        let removeevent=()=>{
+            btn.removeEventListener("click",fun)
+        }
+        let fun=()=>{
+            alert("hello")
+        }
+        let fun1=()=>{
+            btn.style.backgroundColor="blue"
+        }
+        let fun2=()=>{
+            btn.style.backgroundColor="white"
+        }
+
+    </script>
+
+</body>
+</html>

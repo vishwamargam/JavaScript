@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO Application</title>
+    <style>
+        body {
+            width: 98%;
+            height: 97vh;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            position: relative;
+        }
+
+        .container {
+            position: absolute;
+            top: 30px;
+            left: 37%;
+            width: 350px;
+            padding: 20px;
+            border: 2px double white;
+            box-shadow: 0px 0px 4px 4px white;
+            border-radius: 10px;
+            background-color: rgb(46, 46, 46);
+        }
+
+        input {
+            width: 250px;
+            height: 30px;
+            font-size: 20px;
+            padding-left: 10px;
+            font-variant: small-caps;
+        }
+
+        button {
+            width: auto;
+            height: auto;
+            font-size: 20px;
+            padding: 4.5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" placeholder="Enter Todo" id="input" />
+        <button onclick="add()">Add</button>
+        <button onclick="update()" style="display: none;">Update</button>
+        <h1>ToDo List</h1>
+        <table id="todotable"></table>
+        <h1>Completed ToDo List</h1>
+        <table id="completedtable"></table>
+    </div>
+    <script>
+        let input = document.getElementById('input')
+        let todotable = document.getElementById('todotable')
+        let x
+        let add = () => {
+            let todo = localStorage.getItem('todo')
+
+            if (todo == null) {
+                let a = []
+                a.push(input.value)
+                let todo = localStorage.setItem('todo', JSON.stringify(a))
+            }
+            else {
+                let a = JSON.parse(todo)
+                a.push(input.value)
+                todo = localStorage.setItem('todo', JSON.stringify(a))
+            }
+            disp()
+            input.value = ""
+        }
+        let disp = () => {
+            let todo = localStorage.getItem('todo')
+
+            str = ""
+            let a = JSON.parse(todo)
+            for (let i = 0; i < a.length; i++) {
+                str = str + `<tr>
+                    <td>${a[i]}</td>
+                    <td><button onclick="edit(${i})">Edit</button></td>
+                    <td><button onclick="del(${i})">Delete</button></td>
+                    <td><button onclick="completed(${i})">Completed</button></td>
+                    </tr>`
+            }
+            todotable.innerHTML = str
+        }
+        let edit = (ind) => {
+            x = ind
+            let todo = localStorage.getItem('todo')
+            let a = JSON.parse(todo)
+            input.value = a[ind]
+            let button = document.getElementsByTagName("button")
+            button[0].style.display = "none"
+            button[1].style.display = "inline-grid"
+        }
+        let update = () => {
+            let todo = localStorage.getItem('todo')
+            let a = JSON.parse(todo)
+            a[x] = input.value
+            todo = localStorage.setItem('todo', JSON.stringify(a))
+            let button = document.getElementsByTagName("button")
+            button[1].style.display = "none"
+            button[0].style.display = "inline-grid"
+            disp()
+            input.value=''
+        }
+        let del = (ind) => {
+            let todo = localStorage.getItem('todo')
+            let a = JSON.parse(todo)
+            a.splice(ind, 1)
+            todo = localStorage.setItem('todo', JSON.stringify(a))
+            disp()
+        }
+        let completed = (ind) => {
+            let todo = localStorage.getItem('todo')
+            let a = JSON.parse(todo)
+
+            let todocompleted = localStorage.getItem('completed')
+
+            if (todocompleted == null) {
+                let b = []
+                b.push(a[ind])
+                let todocompleted = localStorage.setItem('completed', JSON.stringify(b))
+            }
+            else {
+                let b = JSON.parse(todocompleted)
+                b.push(a[ind])
+                todocompleted = localStorage.setItem('completed', JSON.stringify(b))
+            }
+            del(ind)
+            completedisp()
+        }
+        let completedisp = () => {
+            let completed = localStorage.getItem('completed')
+            let b = JSON.parse(completed)
+            str = ""
+            for (let i = 0; i < b.length; i++) {
+                str = str + `<tr>
+                    <td>${b[i]}</td>
+                    <td><button onclick="cdel(${i})">Delete</button></td>
+                    </tr>`
+            }
+            let ctable = document.getElementById("completedtable").innerHTML = str
+        }
+        let cdel = (ind) => {
+            let completed = localStorage.getItem('completed')
+            let b = JSON.parse(completed)
+            b.splice(ind, 1)
+            completed = localStorage.setItem('completed', JSON.stringify(b))
+            completedisp()
+        }
+        disp()
+        completedisp()
+    </script>
+</body>
+
+</html>

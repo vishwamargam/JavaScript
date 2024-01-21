@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Errors in loadinig in js</title>
+    <script>
+        let fun=()=>{
+            document.getElementsByTagName("p")[0].innerHTML="hello"
+        }
+    </script>
+</head>
+<body onload="fun()">
+    <p></p>
+    //this method will resolve the issue of preloading the js
+</body>
+</html>

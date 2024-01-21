@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation</title>
+    <style>
+        .x {
+            border: 2px solid red;
+        }
+
+        .y {
+            border: 2px solid rgb(33, 220, 33);
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" placeholder="enter uid" onblur="fun1(this)" />
+    <input type="text" placeholder="enter name" onblur="fun2(this)" />
+    <input type="text" placeholder="enter email" onblur="fun3(this)" />
+    <input type="text" placeholder="enter phno" onblur="fun4(this)" />
+    <script>
+        let evalfun = (reg, s) => {
+            if (reg.test(s.value)) {
+                s.className = "y"
+            }
+            else {
+                s.className = "x"
+            }
+        }
+        function fun1(e) {
+            var reg = /^[a-zA-Z0-9]{5,}$/;
+            evalfun(reg, e)
+        }
+        function fun2(e) {
+            var reg = /^([A-Za-z][a-zA-z ]{2,})+$/;
+            evalfun(reg, e)
+        }
+        function fun3(e) {
+            let reg = /^[a-z0-9_]{1,}[.]?[a-z0-9_]{1,}@[a-z]{3,}.(com|in|co.in|org|edu|ac.in)$/i
+            evalfun(reg, e)
+        }
+        function fun4(e) {
+            let reg = /^[6-9][0-9]{9}$/
+            evalfun(reg, e)
+        }
+    </script>
+</body>
+
+</html>

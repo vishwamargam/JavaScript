@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dummy Api retreving data</title>
+</head>
+<body>
+    <table border="1"> </table>
+    <script>
+        fetch("https://dummyjson.com/posts").
+        then((response)=>response.json()).
+        then((data)=>{
+            console.log(data)
+            let str="<tr><th>ID</th><th>TITLE</th><th>BODY</th><th>UID</th><th>TAGS</th></tr>"
+            data.posts.forEach((item)=>{
+                str=str+`<tr>
+                    <td>${item.id}</td>
+                    <td>${item.title}</td>
+                    <td>${item.body}</td>
+                    <td>${item.userId}</td>
+                    <td>${item.tags.toString()}</td>
+                        </tr>`
+            })
+            document.getElementsByTagName('table')[0].innerHTML=str
+        })
+    </script>
+</body>
+</html>
